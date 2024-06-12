@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Munir's Portfolio</title>
+    <link rel="stylesheet" href="CSS/index.css"> 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"> 
+</head>
+<body>
+    <header id="header">
+        <h1>Munir</h1>
+        <h2>DevOps Engineer</h2>
+    </header>
+
+    <main>
+        <section id="about">
+            <h2>About Me</h2>
+            <p class="bio">I am Munir. I am a DevOps Engineer.</p>
+            <a class="bio" href="about.html">More about me...</a>
+        </section>
+
+        <section id="projects">
+            <h2>Projects</h2>
+            <ul>
+                <li>
+                    <h3>Fochan</h3>
+                    <p>Anonymous chat application</p>
+                    <a href="https://github.com/fochan-sna">Project Link</a> 
+                </li>
+            </ul>
+        </section>
+
+        <section id="skills">
+            <h2>Skills</h2>
+            <ul>
+                <li>Continuous Integration (CI)</li>
+                <li>Continuous Delivery (CD)</li>
+                <li>Scripting for system automation</li>
+                <li>CI/CD pipeline development and implementation</li>
+                <li>Containerization technologies (e.g., Docker, Kubernetes)</li>
+                <li>Scripting languages (e.g., Python, Bash, C/C++)</li>
+            </ul>
+        </section>
+
+        <section id="contact">
+            <h2>Connect with Me</h2>
+            <div class="social-links">
+                <a id="gh-link" href="https://github.com/MonitorPC" target="_blank"><i class="fab fa-github"></i></a> 
+                <a id="tg-link" href="https://t.me/Monitor_PC" target="_blank"><i class="fab fa-telegram"></i></a>
+                <a id="email" href="javascript:copyText()"><i class="fas fa-envelope"></i></a>
+                <p id="showText"></p>
+            </div>
+        </section>
+
+        <script>
+            function copyText() {
+                /* Copy text into clipboard */
+                const showText = document.querySelector("#showText");
+                navigator.clipboard.writeText("icowbiyi@gmail.com");
+                showText.innerHTML = `Email is copied`    
+                setTimeout(() => {showText.innerHTML = ''}, 1000)
+            }
+        </script>
+    </main>
+
+    <footer>
+        <p>© 2024 Munir</p>
+    </footer>
+</body>
+</html>
