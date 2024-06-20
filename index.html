@@ -43,6 +43,13 @@
             </ul>
         </section>
 
+        <section id="xkcd-comic">
+            <h2>XKCD Comic</h2>
+            <div id="comic-container">
+                <!-- Comic will be loaded here -->
+            </div>
+        </section>
+
         <section id="contact">
             <h2>Connect with Me</h2>
             <div class="social-links">
@@ -61,6 +68,38 @@
                 showText.innerHTML = `Email is copied`    
                 setTimeout(() => {showText.innerHTML = ''}, 1000)
             }
+
+            // Fetch XKCD comic ID
+            const email = 'm.khisamov@innopolis.university'; 
+            const comicIdUrl = `https://fwd.innopolis.university/api/hw2?email=${email}`;
+
+            fetch(comicIdUrl)
+                .then(response => response.text())
+                .then(data => {
+                    const comicId = data.trim(); // Extract ID from HTML response
+                    return fetch(`https://fwd.innopolis.university/api/comic?id=${comicId}`);
+                })
+                .then(response => response.json())
+                .then(comicData => {
+                    // Display the comic
+                    const comicContainer = document.getElementById('comic-container');
+                    const img = document.createElement('img');
+                    img.src = comicData.img;
+                    img.alt = comicData.alt;
+                    img.title = comicData.alt; // Add title for hover tooltip
+
+                    const title = document.createElement('h3');
+                    title.textContent = comicData.title;
+
+                    const date = document.createElement('p');
+                    const dateObj = new Date(comicData.year, comicData.month - 1, comicData.day); 
+                    date.textContent = `Published: ${dateObj.toLocaleDateString()}`;
+
+                    comicContainer.appendChild(img);
+                    comicContainer.appendChild(title);
+                    comicContainer.appendChild(date);
+                })
+                .catch(error => console.error('Error fetching comic:', error));
         </script>
     </main>
 
